@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+#navi_bar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+/*   width: 800px;  */
+  overflow: hidden;
+  
+}
+#navi_bar li {
+  float: left;
+}
+#navi_bar li a {
+  display: block;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+}
+#navi_bar li a:hover {
+  background-color: #555;
+  color: white;
+}
+#navi_bar li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
