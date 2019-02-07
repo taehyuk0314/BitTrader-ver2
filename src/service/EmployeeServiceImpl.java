@@ -6,9 +6,9 @@ import dao.EmployeeDAOImpl;
 import domain.EmployeeDTO;
 
 public class EmployeeServiceImpl implements EmployeeService{
-	private static EmployeeServiceImpl intance = new EmployeeServiceImpl();
+	private static EmployeeServiceImpl instance = new EmployeeServiceImpl();
 	private EmployeeServiceImpl() {dao=EmployeeDAOImpl.getInstance();}		
-	public static EmployeeServiceImpl getIntance() {return intance;}
+	public static EmployeeServiceImpl getIntance() {return instance;}
 	EmployeeDAOImpl dao;
 	@Override
 	public void registEmployee(EmployeeDTO emp) {
@@ -36,8 +36,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public boolean existEmployee(String searchWord) {
-		return false;
+	public boolean existEmployee(EmployeeDTO emp) {
+		return dao.existEmployee(emp);
 	}
 
 	@Override

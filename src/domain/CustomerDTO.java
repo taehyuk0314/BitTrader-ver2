@@ -3,10 +3,10 @@ import lombok.Data;
 public @Data class CustomerDTO {
 	private String customerID,
 	   customerName,
-	   contactName,
+	   password,
 	   address,
 	   city,
 	   postalCode,
-	   country;
+	   ssn;
 	
 }

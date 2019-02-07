@@ -10,7 +10,7 @@ public interface EmployeeService {
 	public List<EmployeeDTO> retrieveEmployees(String searchWord);
 	public EmployeeDTO retrieveEmployee(String searchWord);
 	public int countEmployees();
-	public boolean existEmployee(String searchWord);
+	public boolean existEmployee(EmployeeDTO emp);
 	public void modifyEmployee(EmployeeDTO emp);
 	public void removeEmployee(EmployeeDTO emp);
 }

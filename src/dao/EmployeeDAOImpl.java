@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -60,8 +61,23 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 	}
 
 	@Override
-	public String existEmployee(String searchWord) {
-		return null;
+	public boolean existEmployee(EmployeeDTO emp) {
+		boolean ok = false;
+		try {
+			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection()
+					.prepareStatement(EmployeeSQL.EXIST.toString());
+			ps.setString(1, emp.getEmployeeID());
+			ps.setString(2, emp.getName());
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				ok= true;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("접근허용"+ok);
+		return ok;
 	}
 
 	@Override

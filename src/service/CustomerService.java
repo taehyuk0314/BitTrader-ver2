@@ -10,7 +10,7 @@ public interface CustomerService {
 	public List<CustomerDTO> retrieveCustomerByNames(String customerName);
 	public CustomerDTO retrieveCustomerByID(String customerID);
 	public int countCustomers();
-	public boolean existCustomer(String CustomerID);
+	public boolean existCustomer(CustomerDTO cus);
 	public void modifyCostomer(CustomerDTO cus);
 	public void removeCostomer(CustomerDTO cus);
 }

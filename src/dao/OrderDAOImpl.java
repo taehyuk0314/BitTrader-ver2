@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import domain.EmployeeDTO;
 import domain.OrderDTO;
 
 public class OrderDAOImpl implements OrderDAO{
@@ -39,7 +40,7 @@ public class OrderDAOImpl implements OrderDAO{
 	}
 
 	@Override
-	public boolean existOrder(String searchWord) {
+	public boolean existOrder(EmployeeDTO emp) {
 		// TODO Auto-generated method stub
 		return false;
 	}

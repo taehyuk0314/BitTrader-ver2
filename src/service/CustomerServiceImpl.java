@@ -36,8 +36,8 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public boolean existCustomer(String CustomerID) {
-		return false;
+	public boolean existCustomer(CustomerDTO cus) {
+		return dao.existCustomer(cus);
 	}
 
 	@Override

@@ -10,7 +10,7 @@ public interface CustomerDAO {
 	public List<CustomerDTO> selectCustomerByNames(String customerName);
 	public CustomerDTO selectCustomerByID(String customerID);
 	public int countCustomers();
-	public String existCustomer(String CustomerID);
+	public boolean existCustomer(CustomerDTO cus);
 	public void updateCostomer(CustomerDTO cus);
 	public void deleteCostomer(CustomerDTO cus);
 }

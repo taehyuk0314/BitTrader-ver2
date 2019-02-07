@@ -30,11 +30,19 @@
     grid-column-start: 2;
     grid-column-end: 5;
 }
-#item_11{
+#item_12{
+    grid-column-start: 2;
+    grid-column-end: 5;
+}
+#item_14{
+    grid-column-start: 2;
+    grid-column-end: 5;
+}
+#item_15{
     grid-column-start: 1;
     grid-column-end: 3;
 }
-#item_12{
+#item_16{
     grid-column-start: 3;
     grid-column-end: 5;
 }

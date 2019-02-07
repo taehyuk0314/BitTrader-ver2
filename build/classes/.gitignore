@@ -1,2 +1,6 @@
 /command/
 /controller/
+/dao/
+/service/
+/enums/
+/domain/
