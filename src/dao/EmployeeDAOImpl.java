@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import domain.EmployeeDTO;
@@ -38,26 +39,70 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
 	@Override
 	public List<EmployeeDTO> selectEmployeesList() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<EmployeeDTO> list = new ArrayList<>();
+		try {
+			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement("");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	@Override
 	public List<EmployeeDTO> selectEmployees(String searchWord) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<EmployeeDTO> list = new ArrayList<>();
+		try {
+			String sql = "";
+			PreparedStatement ps = DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
+			ps.setString(1, "");
+			ResultSet rs =ps.executeQuery();
+			while(rs.next()) {}
+			list.add(null);
+		} 
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	@Override
 	public EmployeeDTO selectEmployee(String searchWord) {
-		// TODO Auto-generated method stub
+		EmployeeDTO cust = new EmployeeDTO();
+		String sql = "";
+		try {
+			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
+			ps.setString(1, "");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
 	public int countEmployees() {
-		// TODO Auto-generated method stub
-		return 0;
+		int count = 0;
+		try {
+			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement("");
+			ResultSet rs =ps.executeQuery();
+			while(rs.next()) {
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 	@Override
@@ -82,14 +127,26 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
 	@Override
 	public void updateEmployee(EmployeeDTO emp) {
-		// TODO Auto-generated method stub
-		
+		String sql = "";
+		try {
+			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void deleteEmployee(EmployeeDTO emp) {
-		// TODO Auto-generated method stub
-		
+		String sql = "";
+		try {
+			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

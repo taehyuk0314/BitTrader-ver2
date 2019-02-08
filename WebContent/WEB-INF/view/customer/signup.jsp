@@ -5,29 +5,40 @@
 <div class="grid-item" id="side_menu">
  	<h1><font style="font-size: 30px">회원 등록</font></h1>
 </div>
-
 <div class="grid-item" id="content">
 <form id="form" name="form" >
-	<div class="grid-container">
-	    <div class="grid-item" id="item_1">회원번호</div>
-	    <div class="grid-item" id="item_2"><input type="text" id="cusid" name="cusid" ></div>
-	    <div class="grid-item" id="item_3">이름</div>
-	    <div class="grid-item" id="item_4"><input type="text" id="cusname" name="cusname" ></div>
-	    <div class="grid-item" id="item_5">비밀번호</div>
-	    <div class="grid-item" id="item_6"><input type="text" id="pass" name="pass" ></div>
-	    <div class="grid-item" id="item_7">주소</div>
-	    <div class="grid-item" id="item_8"><input type="text" id="add" name="add" ></div>
-	    <div class="grid-item" id="item_9">상세 주소</div>
-	    <div class="grid-item" id="item_10"><input type="text" id="city" name="city" ></div>
-	    <div class="grid-item" id="item_11">우편번호</div>
-        <div class="grid-item" id="item_12"><input type="text" id="post" name="post" ></div>
-	    <div class="grid-item" id="item_13">주민번호</div>
-	    <div class="grid-item" id="item_14"><input type="text" id="ㄴ누" name="ssn" ></div>
-	    <div class="grid-item" id="item_15"><input type="submit" id="confirm_btn" value='확 인'></div>
-	    <div class="grid-item" id="item_16"><input type="reset" id="cancel_btn" value='취 소'> </div>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">I  D</span>
+  <input type="text" class="form-control" placeholder="ID" aria-describedby="sizing-addon1" id="cusid" name="cusid">
+</div>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">이  름</span>
+  <input type="text" class="form-control" placeholder="name" aria-describedby="sizing-addon1" id="cusname" name="cusname">
+</div>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">비밀번호</span>
+  <input type="text" class="form-control" placeholder="password" aria-describedby="sizing-addon1" id="pass" name="pass">
+</div>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">주  소</span>
+  <input type="text" class="form-control" placeholder="add" aria-describedby="sizing-addon1" id="add" name="add">
+</div>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">상세 주소</span>
+  <input type="text" class="form-control" placeholder="city" aria-describedby="sizing-addon1" id="city" name="city">
+</div>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">우편번호</span>
+  <input type="text" class="form-control" placeholder="post" aria-describedby="sizing-addon1" id="post" name="post">
+</div>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">주민번호</span>
+  <input type="text" class="form-control" placeholder="ssn" aria-describedby="sizing-addon1" id="ssn" name="ssn">
+</div>
+<button type="button" class="btn btn-default navbar-btn" id="confirm_btn">확 인</button>
+<button type="button" class="btn btn-default navbar-btn" id="cancel_btn">취 소</button>
 	    <input type="hidden" name="cmd" value="signup" />
 	    <input type="hidden" name="page" value="signin" />
-	</div>
 </form>
 </div>
 <jsp:include page="../home/bottom.jsp"/>

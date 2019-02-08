@@ -26,8 +26,8 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public CustomerDTO retrieveCustomerByID(String customerID) {
-		return dao.selectCustomerByID(customerID);
+	public CustomerDTO retrieveCustomer(CustomerDTO cus) {
+		return dao.selectCustomer(cus);
 	}
 
 	@Override
@@ -36,8 +36,8 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public boolean existCustomer(CustomerDTO cus) {
-		return dao.existCustomer(cus);
+	public boolean existCustomerID(CustomerDTO cus) {
+		return dao.existCustomerID(cus);
 	}
 
 	@Override

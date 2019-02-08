@@ -1,0 +1,16 @@
+@charset "UTF-8";
+<style>
+.grid-container3 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #4345462e;
+  padding: 5px;
+}
+.grid-item {
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(41, 102, 132);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+</style>

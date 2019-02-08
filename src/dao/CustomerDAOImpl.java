@@ -2,7 +2,7 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import domain.CustomerDTO;
@@ -41,30 +41,87 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	@Override
 	public List<CustomerDTO> selectCustomers() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<CustomerDTO> list = new ArrayList<>();
+		try {
+			String sql ="";
+			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
+			ps.setString(1, "");
+			ResultSet rs =ps.executeQuery();
+			while(rs.next()) {
+				list.add(null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	@Override
 	public List<CustomerDTO> selectCustomerByNames(String customerName) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<CustomerDTO> list = new ArrayList<>();
+		try {
+			String sql = "";
+			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
+			ps.setString(1, "");
+			ResultSet rs =ps.executeQuery();
+			while(rs.next()) {
+				list.add(null);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	@Override
-	public CustomerDTO selectCustomerByID(String customerID) {
-		// TODO Auto-generated method stub
-		return null;
+	public CustomerDTO selectCustomer(CustomerDTO cus) {
+		CustomerDTO cust = null;
+		try {
+			String sql = CustomerSQL.SIGNIN.toString();
+			PreparedStatement ps = DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
+			ps.setString(1, cus.getCustomerID());
+			ps.setString(2, cus.getPassword());
+			ResultSet rs =ps.executeQuery();
+			while(rs.next()) {
+				cust = new CustomerDTO();
+				cust.setAddress(rs.getString("ADDRESS"));
+				cust.setCity(rs.getString("CITY"));
+				cust.setCustomerID(rs.getString("CUSTOMER_ID"));
+				cust.setCustomerName(rs.getString("CUSTOMER_NAME"));
+				cust.setPassword(rs.getString("PASSWORD"));
+				cust.setPostalCode(rs.getString("POSTALCODE"));
+				cust.setSsn(rs.getString("SSN"));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return cust;
 	}
 
 	@Override
 	public int countCustomers() {
-		// TODO Auto-generated method stub
-		return 0;
+		int count = 0;
+		String sql ="";
+		try {
+			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
+			ps.setString(1, "");
+			ResultSet rs =ps.executeQuery();
+			while(rs.next()) {
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 	@Override
-	public boolean existCustomer(CustomerDTO cus) {
+	public boolean existCustomerID(CustomerDTO cus) {
 		boolean ok = false;
 		try {
 			String sql = CustomerSQL.SIGNIN.toString();

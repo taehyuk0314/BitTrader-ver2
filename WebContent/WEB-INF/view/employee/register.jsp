@@ -7,24 +7,32 @@
 </div>
 <div class="grid-item" id="content">
 <form id="form" name="form" >
-	<div class="grid-container">
-	    <div class="grid-item" id="item_1">이 름</div>
-	    <div class="grid-item" id="item_2"><input type="text" id="name" name="name" ></div>
-	    <div class="grid-item" id="item_3">매니저</div>
-	    <div class="grid-item" id="item_4"><input type="text" id="manager" name="manager" ></div>
-	    <div class="grid-item" id="item_5">생년월일</div>
-	    <div class="grid-item" id="item_6"><input type="text" id="birthday" name="birthday" ></div>
-	    <div class="grid-item" id="item_7">사진</div>
-	    <div class="grid-item" id="item_8"><input type="text" id="photo" name="photo" ></div>
-	    <div class="grid-item" id="item_9">상 세</div>
-	    <div class="grid-item" id="item_10"><input type="text" id="notes" name="notes" ></div>
-	    <div class="grid-item" id="item_11"><input type="submit" id="confirm_btn" value='확 인'></div>
-	    <div class="grid-item" id="item_12"><input type="reset" id="cancel_btn" value='취 소'> </div>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">이  름</span>
+  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1" id="name" name="name">
+</div>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">매니저 </span>
+  <input type="text" class="form-control" placeholder="manager" aria-describedby="sizing-addon1" id="manager" name="manager">
+</div>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">생년월일</span>
+  <input type="text" class="form-control" placeholder="birthday" aria-describedby="sizing-addon1" id="birthday" name="birthday">
+</div>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">사  진</span>
+  <input type="text" class="form-control" placeholder="photo" aria-describedby="sizing-addon1" id="photo" name="photo">
+</div>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="basic-addon1">상  세</span>
+  <input type="text" class="form-control" placeholder="notes" aria-describedby="sizing-addon1" id="notes" name="notes">
+</div>
+<button type="button" class="btn btn-default navbar-btn" id="confirm_btn">확 인</button>
+<button type="button" class="btn btn-default navbar-btn" id="cancel_btn">취 소</button>
 	    <input type="hidden" name="cmd" value="register" />
 	    <input type="hidden" name="page" value="access" />
+</form>	
 	</div>
-</form>
-</div>
 <jsp:include page="../home/bottom.jsp"/>
 <script>
 $('#confirm_btn').click(function(){

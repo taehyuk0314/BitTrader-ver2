@@ -9,14 +9,14 @@
 <form id="form" name="form" >
 	<div class="grid-container">
 	    <div class="grid-item" id="item_1">아이디</div>
-	    <div class="grid-item" id="item_2"><input type="text" id="cusid" name="cusid" value="taehyek"></div>
+	    <div class="grid-item" id="item_2"><input type="text" id="cusid" name="cusid" value="taehyuk"></div>
 	    <div class="grid-item" id="item_3">비밀번호</div>
 	    <div class="grid-item" id="item_4"><input type="text" id="pass" name="pass" value="7560309"></div>
 	    <div class="grid-item" id="item_11"><input type="submit" id="confirm_btn" value='확 인'></div>
 	    <div class="grid-item" id="item_12"><input type="reset" id="cancel_btn" value='취 소'> </div>
 	    <input type="hidden" name="cmd" value="signin" />
-	    <input type="hidden" name="page" value="list" />
-	    <input type="hidden" name="dir" value="customer" />
+	    <input type="hidden" name="page" value="main" />
+	    <input type="hidden" name="dir" value="category" />
 	</div>
 </form>
 </div>
