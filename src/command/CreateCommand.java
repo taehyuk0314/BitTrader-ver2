@@ -28,10 +28,11 @@ public class CreateCommand extends Command{
 			cus.setCustomerID(request.getParameter("cusid"));
 			cus.setCustomerName(request.getParameter("cusname"));
 			cus.setPassword(request.getParameter("pass"));
+			cus.setSsn(request.getParameter("ssn"));
+			cus.setPhone(request.getParameter("phone"));
+			cus.setPostalCode(request.getParameter("post"));
 			cus.setAddress(request.getParameter("add"));
 			cus.setCity(request.getParameter("city"));
-			cus.setPostalCode(request.getParameter("post"));
-			cus.setSsn(request.getParameter("ssn"));
 			CustomerServiceImpl.getInstance().registCustomer(cus);
 			break;
 		default:

@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
 import domain.CustomerDTO;
 import enums.CustomerSQL;
 import enums.Vendor;
@@ -25,10 +27,12 @@ public class CustomerDAOImpl implements CustomerDAO{
 			ps.setString(1, cus.getCustomerID());
 			ps.setString(2, cus.getCustomerName());
 			ps.setString(3, cus.getPassword());
-			ps.setString(4, cus.getAddress());
-			ps.setString(5, cus.getCity());
-			ps.setString(6, cus.getPostalCode());
-			ps.setString(7, cus.getSsn());
+			ps.setString(4, cus.getSsn());
+			ps.setString(5, cus.getPhoto());
+			ps.setString(6, cus.getPhone());
+			ps.setString(7, cus.getCity());
+			ps.setString(8, cus.getAddress());
+			ps.setString(9, cus.getPostalCode());
 			int rs = ps.executeUpdate();
 			System.out.println((rs==1)?"회원입력성공":"회원입력실패");
 		} catch (Exception e) {
@@ -41,19 +45,31 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	@Override
 	public List<CustomerDTO> selectCustomers() {
+		System.out.println("-----list로 들어옴------");
 		ArrayList<CustomerDTO> list = new ArrayList<>();
+		
 		try {
-			String sql ="";
+			String sql = CustomerSQL.LIST.toString();
+			System.out.println("----list sql값 :" + sql);
 			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
-			ps.setString(1, "");
 			ResultSet rs =ps.executeQuery();
+			CustomerDTO cust = null;
 			while(rs.next()) {
-				list.add(null);
+				cust = new CustomerDTO();
+				        cust.setCustomerID(rs.getString("CUSTOMER_ID"));
+				        cust.setCustomerName(rs.getString("CUSTOMER_NAME"));
+				        cust.setSsn(rs.getString("SSN"));
+				        cust.setPhone(rs.getString("PHONE"));
+				        cust.setCity(rs.getString("CITY"));
+				        cust.setAddress(rs.getString("ADDRESS"));
+				        cust.setPostalCode(rs.getString("POSTALCODE"));
+				        list.add(cust);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(list+"입니다");
 		return list;
 	}
 
@@ -61,7 +77,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 	public List<CustomerDTO> selectCustomerByNames(String customerName) {
 		ArrayList<CustomerDTO> list = new ArrayList<>();
 		try {
-			String sql = "";
+			String sql ="";
 			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
 			ps.setString(1, "");
 			ResultSet rs =ps.executeQuery();
@@ -93,6 +109,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 				cust.setPassword(rs.getString("PASSWORD"));
 				cust.setPostalCode(rs.getString("POSTALCODE"));
 				cust.setSsn(rs.getString("SSN"));
+				cust.setPhone(rs.getString("PHONE"));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
