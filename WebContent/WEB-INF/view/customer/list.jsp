@@ -12,6 +12,7 @@
  	</h1>
 </div>
 <div class="grid-item" id="content">
+
 	<table id="cust_tab">
 	  <tr>
 	    <th>No.</th>
@@ -24,9 +25,11 @@
 	    <th>지번주소</th>
 	    <th>상세주소</th>
 	  </tr>
-	  <c:forEach items="${list}" var="cust">
+
+	  
+	  <c:forEach items="${list}" var="cust">	  
 	  <tr>
-	    <td>1</td>
+	    <td>${cust.rnum}</td>
 	    <td>${cust.customerID}</td>
 	    <td>${cust.customerName}</td>
 	    <td>${cust.ssn}</td>
@@ -36,20 +39,29 @@
 	    <td>${cust.city}</td>
 	    <td>${cust.address}</td>
 	  </tr>
-	  </c:forEach>
-	  
+	  </c:forEach>	  
+
 	</table>
-	<div style="height: 50px"></div>    
+	<div style="height: 50px"></div>    	
 	<div class="center">
 	  <div class="pagination">
+	  <form id="form" name="form">
 	  <a href="#">&laquo;</a>
 	  <a href="#" class="active">1</a>
-	  <a href="#">2</a>
+	  <a href="#" id="two">2</a>
 	  <a href="#">3</a>
 	  <a href="#">4</a>
 	  <a href="#">5</a>
 	  <a href="#">&raquo;</a>
-	  </div>
+	  
+	  </form>
+	  </div>	  
 	</div>
 </div>
 <jsp:include page="../home/bottom.jsp"/>
+<script>
+$('#two').click(function(){
+	alert('2페이지 클릭');
+	location.assign('${ctx}/customer.do?cmd=cust_list&page=list&page_num=2&page_size=5');
+});
+</script>

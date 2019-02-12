@@ -18,6 +18,10 @@ public class Commander {
 			case ACCESS: case SIGNIN:
 				cmd = new ExistCommand(request, response);
 				break;
+			case CUST_LIST:
+				System.out.println("-==11==-");
+				cmd = new ListCommand(request, response);
+				break;
 			default:
 				break;
 			}

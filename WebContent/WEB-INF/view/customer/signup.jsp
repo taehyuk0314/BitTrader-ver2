@@ -57,7 +57,6 @@ $('#confirm_btn').click(function(){
 	var add = $('#add').val();
 	var city = $('#city').val();
 	$('#form')
-	.attr('action', '${ctx}/customer.do')
-	.submit();
+	.attr('action', '${ctx}/customer.do');
 });
 </script>

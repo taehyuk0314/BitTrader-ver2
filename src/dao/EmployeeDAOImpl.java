@@ -3,7 +3,6 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,7 +85,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return cust;
 	}
 
 	@Override

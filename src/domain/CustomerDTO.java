@@ -9,6 +9,7 @@ public @Data class CustomerDTO {
 	   phone,
 	   city,
 	   address,
-	   postalCode;
+	   postalCode,
+	   rnum;
 	
 }

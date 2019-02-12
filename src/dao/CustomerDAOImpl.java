@@ -5,12 +5,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import domain.CustomerDTO;
 import enums.CustomerSQL;
 import enums.Vendor;
 import factory.DatabaseFactory;
+import proxy.Pagination;
 
 public class CustomerDAOImpl implements CustomerDAO{
 	private static CustomerDAOImpl instance = new CustomerDAOImpl();
@@ -44,7 +44,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 	}
 
 	@Override
-	public List<CustomerDTO> selectCustomers() {
+	public List<CustomerDTO> selectCustomers(Pagination page) {
 		System.out.println("-----list로 들어옴------");
 		ArrayList<CustomerDTO> list = new ArrayList<>();
 		
@@ -52,6 +52,8 @@ public class CustomerDAOImpl implements CustomerDAO{
 			String sql = CustomerSQL.LIST.toString();
 			System.out.println("----list sql값 :" + sql);
 			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
+			ps.setString(1, page.getStartRow());
+			ps.setString(2, page.getEndRow());
 			ResultSet rs =ps.executeQuery();
 			CustomerDTO cust = null;
 			while(rs.next()) {
@@ -63,6 +65,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 				        cust.setCity(rs.getString("CITY"));
 				        cust.setAddress(rs.getString("ADDRESS"));
 				        cust.setPostalCode(rs.getString("POSTALCODE"));
+				        cust.setRnum(rs.getString("RNUM"));
 				        list.add(cust);
 			}
 		} catch (Exception e) {
@@ -70,6 +73,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 			e.printStackTrace();
 		}
 		System.out.println(list+"입니다");
+		System.out.println("사이즈는 : "+list.size());
 		return list;
 	}
 
@@ -122,14 +126,14 @@ public class CustomerDAOImpl implements CustomerDAO{
 	@Override
 	public int countCustomers() {
 		int count = 0;
-		String sql ="";
+		String sql =CustomerSQL.COUNT.toString();
 		try {
 			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
-			ps.setString(1, "");
 			ResultSet rs =ps.executeQuery();
 			while(rs.next()) {
-				
+				rs.getInt(count);
 			}
+			System.out.println("카운트는 : "+count);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
