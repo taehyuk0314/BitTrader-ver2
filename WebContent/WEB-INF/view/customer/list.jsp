@@ -47,11 +47,9 @@
 	  <div class="pagination">
 	  <form id="form" name="form">
 	  <a href="#">&laquo;</a>
-	  <a href="#" class="active">1</a>
-	  <a href="#" id="two">2</a>
-	  <a href="#">3</a>
-	  <a href="#">4</a>
-	  <a href="#">5</a>
+	  <c:forEach begin="1" end="5" varStatus="status">
+	  <a href="#" id="page_${status.count}">${status.count}</a>
+	  </c:forEach>
 	  <a href="#">&raquo;</a>
 	  
 	  </form>
@@ -60,7 +58,8 @@
 </div>
 <jsp:include page="../home/bottom.jsp"/>
 <script>
-$('#two').click(function(){
+//class="active"
+$('#page_2').click(function(){
 	alert('2페이지 클릭');
 	location.assign('${ctx}/customer.do?cmd=cust_list&page=list&page_num=2&page_size=5');
 });
