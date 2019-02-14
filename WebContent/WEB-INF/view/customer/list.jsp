@@ -42,25 +42,30 @@
 	  </c:forEach>	  
 
 	</table>
+	
 	<div style="height: 50px"></div>    	
 	<div class="center">
 	  <div class="pagination">
 	  <form id="form" name="form">
-	  <a href="#">&laquo;</a>
-	  <c:forEach begin="1" end="5" varStatus="status">
-	  <a href="#" id="page_${status.count}">${status.count}</a>
+	  <c:if test="${pagination.existPrev}">
+	  <a href='${ctx}/customer.do?cmd=cust_list&page=list&page_size=5&page_num=${pagination.prevBlock}'>&laquo;</a>
+	  </c:if>
+	  <c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" varStatus="status">
+	  <a href="#" class="page">${status.index}</a>
 	  </c:forEach>
-	  <a href="#">&raquo;</a>
-	  
+	  <c:if test="${pagination.existNext}">
+	  <a href='${ctx}/customer.do?cmd=cust_list&page=list&page_size=5&page_num=${pagination.nextBlock}'>&raquo;</a>
+	  </c:if>
 	  </form>
 	  </div>	  
 	</div>
 </div>
 <jsp:include page="../home/bottom.jsp"/>
 <script>
-//class="active"
-$('#page_2').click(function(){
-	alert('2페이지 클릭');
-	location.assign('${ctx}/customer.do?cmd=cust_list&page=list&page_num=2&page_size=5');
+$('.page').each(function(){
+	$(this).click(function(){
+	alert($(this).text()+"클릭");
+	location.assign('${ctx}/customer.do?cmd=cust_list&page=list&page_num='+$(this).text()+'&page_size=5');
+	});
 });
 </script>

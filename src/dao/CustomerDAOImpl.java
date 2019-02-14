@@ -2,8 +2,11 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import domain.CustomerDTO;
 import enums.CustomerSQL;
@@ -175,6 +178,28 @@ public class CustomerDAOImpl implements CustomerDAO{
 	public void deleteCostomer(CustomerDTO cus) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public Map<String, Object> selectPhone(Proxy pxy) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			String sql = CustomerSQL.PHONE.toString();
+			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			CustomerDTO cus = null;
+			while(rs.next()) {
+				cus = new CustomerDTO();
+				String entry =rs.getString("CUSTOMER_ID");
+				cus.setCustomerName(rs.getString("CUSTOMER_NAME"));
+				cus.setPhone(rs.getString("PHONE"));
+				map.put(entry, cus);
+			
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return map;
 	}
 
 }

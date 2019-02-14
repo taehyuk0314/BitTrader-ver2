@@ -24,6 +24,7 @@ public class ListCommand extends Command{
 		System.out.println(request.getParameter("cmd"));
 		List<CustomerDTO> list =CustomerServiceImpl.getInstance().bringCustomers(pagePxy);
 		request.setAttribute("list", list);
+		request.setAttribute("pagination", paging);
 	}
 	
 }

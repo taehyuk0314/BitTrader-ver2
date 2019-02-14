@@ -24,10 +24,28 @@ public class Pagination implements Proxy{
 		blockSize = (_blockSize==null)? 5 : Integer.parseInt(_blockSize);
 		rowCount = CustomerServiceImpl.getInstance().countCustomers(null);
 		System.out.println("전체카운트는 : "+rowCount);
+		
 		pageCount = rowCount / pageSize;
 		startRow = (pageNum-1)*pageSize +1;
 		endRow = (rowCount> pageNum * pageSize)?pageNum * pageSize:rowCount;
 		
+		
+		System.out.println("엔드페이지 "+endPage);
+			endPage=
+			startPage=
+		
+		prevBlock = startPage - pageSize;
+		nextBlock = startPage + pageSize;
+		
+		existPrev = false;
+		existNext = false;
+		if(prevBlock!=-4) {existPrev = true;}
+		if(nextBlock!=1) {existNext = true;}
+		
+//		if(blockSize) {
+//			
+//			existPrev = true;
+//		}
 		
 		
 //		startRow =rowCount-(pageNum*pageSize)+1;
