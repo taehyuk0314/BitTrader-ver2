@@ -2,7 +2,6 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +23,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 	@Override
 	public void insertCustomer(CustomerDTO cus) {
 		try {
+			
 			String sql =CustomerSQL.SIGNUP.toString();
 			System.out.println(sql);
 			PreparedStatement ps=DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection()
@@ -89,11 +89,14 @@ public class CustomerDAOImpl implements CustomerDAO{
 		try {
 			String sql ="";
 			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
-			ps.setString(1, "");
+			
 			ResultSet rs =ps.executeQuery();
+			CustomerDTO cust = null;
 			while(rs.next()) {
-				list.add(null);
+				cust = new CustomerDTO();
+				list.add(cust);
 			}
+			System.out.println(list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -105,10 +108,13 @@ public class CustomerDAOImpl implements CustomerDAO{
 	public CustomerDTO selectCustomer(CustomerDTO cus) {
 		CustomerDTO cust = null;
 		try {
-			String sql = CustomerSQL.SIGNIN.toString();
+			System.out.println("커스터머이동");
+			String sql =(cus.getPassword()==null)?CustomerSQL.RETRIEVE.toString() : CustomerSQL.SIGNIN.toString();
 			PreparedStatement ps = DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
 			ps.setString(1, cus.getCustomerID());
-			ps.setString(2, cus.getPassword());
+			if(cus.getPassword()!=null) {
+				ps.setString(2, cus.getPassword());
+			} 
 			ResultSet rs =ps.executeQuery();
 			while(rs.next()) {
 				cust = new CustomerDTO();
@@ -116,6 +122,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 				cust.setCity(rs.getString("CITY"));
 				cust.setCustomerID(rs.getString("CUSTOMER_ID"));
 				cust.setCustomerName(rs.getString("CUSTOMER_NAME"));
+				cust.setPhone(rs.getString("PHONE"));
 				cust.setPassword(rs.getString("PASSWORD"));
 				cust.setPostalCode(rs.getString("POSTALCODE"));
 				cust.setSsn(rs.getString("SSN"));
@@ -128,6 +135,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 		
 		return cust;
 	}
+
 
 	@Override
 	public int countCustomers(Proxy pxy) {

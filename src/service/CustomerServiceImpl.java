@@ -32,6 +32,7 @@ public class CustomerServiceImpl implements CustomerService{
 		return dao.selectCustomer(cus);
 	}
 
+
 	@Override
 	public int countCustomers(Proxy pxy) {
 		return dao.countCustomers(pxy);

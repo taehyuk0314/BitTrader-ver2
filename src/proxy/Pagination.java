@@ -30,18 +30,22 @@ public class Pagination implements Proxy{
 		endRow = (rowCount> pageNum * pageSize)?pageNum * pageSize:rowCount;
 		
 		
-		System.out.println("엔드페이지 "+endPage);
-			endPage=
-			startPage=
 		
-		prevBlock = startPage - pageSize;
+		
+		startPage =(pageNum-1)/blockSize*blockSize+1;
+		
+		endPage = startPage+4;
+		if(endPage>pageCount) {
+			endPage = pageCount;
+		}
+		
+		System.out.println("엔드페이지: "+endPage);
+		existPrev = (startPage - pageSize) > 0;
+		existNext = (startPage + pageSize) <= pageCount;
+		prevBlock = startPage - pageSize; 
+		System.out.println("프리브블록: "+prevBlock);
 		nextBlock = startPage + pageSize;
-		
-		existPrev = false;
-		existNext = false;
-		if(prevBlock!=-4) {existPrev = true;}
-		if(nextBlock!=1) {existNext = true;}
-		
+		System.out.println("넥스트블록: "+nextBlock);
 //		if(blockSize) {
 //			
 //			existPrev = true;

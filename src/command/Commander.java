@@ -25,8 +25,11 @@ public class Commander {
 				cmd = new ExistCommand(pxy);
 				break;
 			case CUST_LIST:
-				System.out.println("-==11==-");
 				cmd = new ListCommand(pxy);
+				break;
+			case CUST_RETRIEVE :
+				System.out.println("여기를탄다");
+				cmd = new RetrieveCommand(pxy);
 				break;
 			default:
 				break;

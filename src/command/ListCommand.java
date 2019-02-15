@@ -18,8 +18,8 @@ public class ListCommand extends Command{
 		RequestProxy req = (RequestProxy) pxy.get("req");
 		HttpServletRequest request = req.getRequest();
 		Proxy paging = new Pagination();
-		paging.carryOut(request);
 		Proxy pagePxy = new PageProxy();
+		paging.carryOut(request);
 		pagePxy.carryOut(paging);
 		System.out.println(request.getParameter("cmd"));
 		List<CustomerDTO> list =CustomerServiceImpl.getInstance().bringCustomers(pagePxy);

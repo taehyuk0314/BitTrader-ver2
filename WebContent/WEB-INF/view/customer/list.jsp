@@ -31,7 +31,7 @@
 	  <tr>
 	    <td>${cust.rnum}</td>
 	    <td>${cust.customerID}</td>
-	    <td>${cust.customerName}</td>
+	    <td><a href="${ctx}/customer.do?cmd=cust_retrieve&page=detail&customerID=${cust.customerID}">${cust.customerName}</a></td>
 	    <td>${cust.ssn}</td>
 	    <td>남</td>
 	    <td>${cust.phone}</td>
@@ -47,13 +47,20 @@
 	<div class="center">
 	  <div class="pagination">
 	  <form id="form" name="form">
-	  <c:if test="${pagination.existPrev}">
+	  <c:if test='${pagination.existPrev}'>
 	  <a href='${ctx}/customer.do?cmd=cust_list&page=list&page_size=5&page_num=${pagination.prevBlock}'>&laquo;</a>
 	  </c:if>
 	  <c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" varStatus="status">
-	  <a href="#" class="page">${status.index}</a>
+	  <c:choose>
+	  	<c:when test="${pagination.pageNum eq status.index}" >
+	  	 	<a href="#"class='page active'>${status.index}</a>
+	  	</c:when>
+	  	<c:otherwise>
+	  	 	<a href="#"class='page'>${status.index}</a>
+	  	</c:otherwise>
+	  </c:choose>
 	  </c:forEach>
-	  <c:if test="${pagination.existNext}">
+	  <c:if test='${pagination.existNext}'>
 	  <a href='${ctx}/customer.do?cmd=cust_list&page=list&page_size=5&page_num=${pagination.nextBlock}'>&raquo;</a>
 	  </c:if>
 	  </form>

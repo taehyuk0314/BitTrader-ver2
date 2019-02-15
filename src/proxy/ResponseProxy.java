@@ -11,5 +11,4 @@ public class ResponseProxy implements Proxy{
 		System.out.println("--------4프록시리스폰---------");
 			setResponse((HttpServletResponse) o);		
 	}
-
 }

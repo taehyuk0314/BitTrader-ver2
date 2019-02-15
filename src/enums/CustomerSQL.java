@@ -1,7 +1,7 @@
 package enums;
 
 public enum CustomerSQL {
-	SIGNUP,SIGNIN,LIST,ROW_COUNT,PHONE;
+	SIGNUP,SIGNIN,LIST,ROW_COUNT,PHONE,RETRIEVE;
 	@Override
 	public String toString() {
 		StringBuffer query = new StringBuffer();
@@ -28,8 +28,10 @@ public enum CustomerSQL {
 		case PHONE :
 			query.append("SELECT CUSTOMER_ID,CUSTOMER_NAME,PHONE FROM CUSTOMERS");
 			break;
+		case RETRIEVE :
+			query.append("select * from customers where customer_id like ?");
+			break;
 		}
-		
 		return query.toString();
 	}
 }
