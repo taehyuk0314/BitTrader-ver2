@@ -28,9 +28,11 @@ public class Commander {
 				cmd = new ListCommand(pxy);
 				break;
 			case CUST_RETRIEVE :
-				System.out.println("여기를탄다");
 				cmd = new RetrieveCommand(pxy);
 				break;
+			case CUST_UPDATE :
+				cmd = new UpdateCommand(pxy);
+			break;
 			default:
 				break;
 			}

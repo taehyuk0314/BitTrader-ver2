@@ -28,4 +28,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>WebContent/resources/img/custo.png</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/Desktop/custo.png</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

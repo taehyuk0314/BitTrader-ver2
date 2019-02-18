@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -178,8 +179,25 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	@Override
 	public void updateCostomer(CustomerDTO cus) {
-		// TODO Auto-generated method stub
-		
+		String sql =CustomerSQL.UPDATE.toString();
+		try {
+			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
+			ps.setString(1, cus.getPhone());
+			ps.setString(2, cus.getPostalCode());
+			ps.setString(3, cus.getCity());
+			ps.setString(4, cus.getAddress());
+			ps.setString(5, cus.getPassword());
+			ps.setString(6, cus.getCustomerID());
+			int rs =ps.executeUpdate();
+			if(rs==1) {
+				System.out.println("값이들어감");
+			}else {
+				System.out.println("값넣기 실패");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
