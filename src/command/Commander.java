@@ -32,7 +32,10 @@ public class Commander {
 				break;
 			case CUST_UPDATE :
 				cmd = new UpdateCommand(pxy);
-			break;
+				break;
+			case CUST_FILE_UPLOAD :
+				cmd = new FileCommand(pxy);
+				break;
 			default:
 				break;
 			}

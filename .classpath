@@ -17,5 +17,6 @@
 	<classpathentry exported="true" kind="lib" path="C:/Users/hanbit/java_basic/jee_wokspasce/jakarta-taglibs-standard-1.1.2/jakarta-taglibs-standard-1.1.2/lib/jstl.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/hanbit/java_basic/jee_wokspasce/jakarta-taglibs-standard-1.1.2/jakarta-taglibs-standard-1.1.2/lib/standard.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/hanbit/java_basic/jee_wokspasce/lombok.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/hanbit/java_basic/jee_wokspasce/cos-26Dec2008/lib/cos.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

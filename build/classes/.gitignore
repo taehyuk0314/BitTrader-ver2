@@ -1,4 +1,5 @@
-/controller/
-/command/
-/enums/
+/service/
 /dao/
+/command/
+/proxy/
+/enums/
