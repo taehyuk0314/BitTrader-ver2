@@ -26,16 +26,15 @@ public class FileCommand extends Command {
 			 ipxy.carryOut(request);
 			 
 			 ImageDTO image = ipxy.getImg();
-			 String customerID = ipxy.getImg().getOwner();
-			 CustomerDTO cust = new CustomerDTO();
-			 cust.setCustomerID(customerID);
-			 cust =CustomerServiceImpl.getInstance().fileUpload(ipxy);
+			 Map<String, Object> map = CustomerServiceImpl.getInstance().fileUpload(ipxy);
+			 image = (ImageDTO) map.get("image");
+			 CustomerDTO cust = (CustomerDTO) map.get("cust");
+			 
 			 request.setAttribute("image", image);
 			 request.setAttribute("cust", cust);
 			 break;
 		default:
 			break;
-//			 ipxy.getImg().setOwner(request.getParameter("customerID"));
 	}
 		 
 }

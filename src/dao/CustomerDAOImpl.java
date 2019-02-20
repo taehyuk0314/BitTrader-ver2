@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.sun.prism.Image;
+
 import domain.CustomerDTO;
 import domain.ImageDTO;
 import enums.CustomerSQL;
@@ -234,7 +236,8 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return map;
 	}
 	@Override
-	public CustomerDTO selectProfile(Proxy pxy) {
+	public Map<String, Object> selectProfile(Proxy pxy) {
+		Map<String, Object> map = new HashMap<String, Object>();
 		CustomerDTO cust = new CustomerDTO();
 		try {
 			String sql ="";
@@ -242,19 +245,27 @@ public class CustomerDAOImpl implements CustomerDAO{
 			ImageDAOImpl.getInstance().createImage(((ImageProxy) pxy).getImg());
 			
 			String imgSeq = ImageDAOImpl.getInstance().lastImageSeq();
-			
+			System.out.println("라스트 이미지는  "+imgSeq);
 			sql ="UPDATE CUSTOMERS SET PHOTO =? WHERE CUSTOMER_ID LIKE ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, imgSeq);
 			ps.setString(2, ipxy.getImg().getOwner());
+			ps.executeUpdate();
 			
 			cust.setCustomerID(ipxy.getImg().getOwner());
 			cust = selectCustomer(cust);
-			ResultSet rs = ps.executeQuery();
+			map.put("cust", cust);
+			String seq = ImageDAOImpl.getInstance().lastImageSeq();
+			ImageDTO img = new ImageDTO();
+			img.setImgSeq(seq);
+			System.out.println(img.toString());
+			img= ImageDAOImpl.getInstance().selectImage(img);
+			System.out.println("셀렉트이미지: "+img.toString());
+			map.put("image", img);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return cust;
+		return map;
 	}
 }

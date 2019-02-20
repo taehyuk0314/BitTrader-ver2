@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +21,13 @@ public class ImageDAOImpl implements ImageDAO{
 
 	@Override
 	public void createImage(ImageDTO img) {
-		String sql = "";
+		String sql = "insert into image(IMG_SEQ,IMG_NAME,IMG_EXTENTION,OWNER)\r\n" + 
+				"values(IMG_SEQ.NEXTVAL,?,?,?)";
 		try {
 			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
-			ps.setString(1, "");
+			ps.setString(1, img.getImgName());
+			ps.setString(2, img.getImgExtention());
+			ps.setString(3, img.getOwner());
 			int rs =ps.executeUpdate();
 			if(rs==1) {
 				System.out.println("값이 들어감");
@@ -74,18 +78,24 @@ public class ImageDAOImpl implements ImageDAO{
 	@Override
 	public ImageDTO selectImage(ImageDTO img) {
 		ImageDTO imge = new ImageDTO();
-		String sql = "";
+		String sql = " select * from image  where IMG_SEQ like ?";
 		try {
 			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
-			ps.setString(1, "");
+			System.out.println(img.getImgSeq());
+			ps.setString(1, img.getImgSeq());
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				imge = new ImageDTO();
+				imge.setImgSeq(rs.getString("IMG_SEQ"));
+				imge.setImgName(rs.getString("IMG_NAME"));
+				imge.setImgExtention(rs.getString("IMG_EXTENTION"));
+				imge.setOwner(rs.getString("OWNER"));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("셀렉트이미지 값: "+imge.toString());
 		return imge;
 	}
 
@@ -140,8 +150,20 @@ public class ImageDAOImpl implements ImageDAO{
 	}
 	@Override
 	public String lastImageSeq() {
-		// TODO Auto-generated method stub
-		return null;
+		String seq = "";
+		String sql="select max(IMG_SEQ) IMG_SEQ\r\n" + 
+				"from image";
+		try {
+			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
+			ResultSet rs =ps.executeQuery();
+			while(rs.next()) {
+	 			seq=rs.getString("IMG_SEQ");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return seq;
 	}
 
 }
