@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<nav class="navbar navbar-default">
+<nav class="navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -18,10 +18,15 @@
         <li><a href="#">카테고리</a></li>
         <li><a href="#">사원</a></li>
         <li><a href="#">주문</a></li>
-        <li><a href="#">상품</a></li>
+        <li><a href="#" id="product">상품</a></li>
         <li><a href="#">선박</a></li>
         <li><a href="#">공급업체</a></li>
       </ul>
     </div>
   </div>
 </nav>
+<script>
+$('#product').click(function(){
+	location.assign('${ctx}/product.do?cmd=prod_list&dir=product&page=list');
+});
+</script>

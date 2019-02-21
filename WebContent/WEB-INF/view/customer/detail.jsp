@@ -34,6 +34,9 @@
 <div class="grid-item" style="width: 100%">
 <button type="button" class="btn btn-primary" id="update_btn" >수  정</button>
 </div>
+<div class="grid-item" style="width: 100%">
+<button type="button" class="btn btn-danger" id="delete_btn" >삭  제</button>
+</div>
 <jsp:include page="../home/bottom.jsp"/>
 <script>
 	$('#update_btn').click(function(){
@@ -47,5 +50,9 @@
 		.attr('action','${ctx}/customer.do?cmd=cust_file_upload&page=detail&customerID=${cust.customerID}')
 		.attr('enctype','multipart/form-data')
 		.submit();
+	});
+	$('#delete_btn').click(function(){
+		alert('삭제버튼클릭');
+		location.assign('${ctx}/customer.do?cmd=cust_delete&dir=home&page=main&customerID=${cust.customerID}');
 	});
 </script>

@@ -20,6 +20,7 @@ import proxy.ImageProxy;
 import proxy.PageProxy;
 import proxy.Pagination;
 import proxy.Proxy;
+import service.ImageServiceImpl;
 
 public class CustomerDAOImpl implements CustomerDAO{
 	private static CustomerDAOImpl instance = new CustomerDAOImpl();
@@ -41,13 +42,13 @@ public class CustomerDAOImpl implements CustomerDAO{
 			ps.setString(2, cus.getCustomerName());
 			ps.setString(3, cus.getPassword());
 			ps.setString(4, cus.getSsn());
-			ps.setString(5, cus.getPhoto());
-			ps.setString(6, cus.getPhone());
+			ps.setString(5, cus.getPhone());
+			ps.setString(6, cus.getPostalCode());
 			ps.setString(7, cus.getCity());
 			ps.setString(8, cus.getAddress());
-			ps.setString(9, cus.getPostalCode());
 			int rs = ps.executeUpdate();
 			System.out.println((rs==1)?"회원입력성공":"회원입력실패");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -135,8 +136,9 @@ public class CustomerDAOImpl implements CustomerDAO{
 				cust.setPassword(rs.getString("PASSWORD"));
 				cust.setPostalCode(rs.getString("POSTALCODE"));
 				cust.setSsn(rs.getString("SSN"));
-				cust.setPhone(rs.getString("PHONE"));
+				cust.setPhoto(rs.getString("PHOTO"));
 			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -210,8 +212,18 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	@Override
 	public void deleteCostomer(CustomerDTO cus) {
-		// TODO Auto-generated method stub
-		
+		String sql ="delete from customers where customer_id like ?";
+		try {
+			PreparedStatement ps =DatabaseFactory.createDatabase(Vendor.ORACLE).getConnection().prepareStatement(sql);
+			ps.setString(1, cus.getCustomerID());
+			int rs =ps.executeUpdate();
+			if(rs==1) {
+				System.out.println("값이 삭제됨");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	@Override
 	public Map<String, Object> selectPhone(Proxy pxy) {

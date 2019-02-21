@@ -32,12 +32,12 @@
   <input type="text" class="form-control" placeholder="post" aria-describedby="sizing-addon1" id="post" name="post">
 </div>
 <div class="input-group input-group-lg">
-  <span class="input-group-addon" id="basic-addon1">주  소</span>
-  <input type="text" class="form-control" placeholder="add" aria-describedby="sizing-addon1" id="add" name="add">
+  <span class="input-group-addon" id="basic-addon1">주   소</span>
+  <input type="text" class="form-control" placeholder="city" aria-describedby="sizing-addon1" id="city" name="city">
 </div>
 <div class="input-group input-group-lg">
-  <span class="input-group-addon" id="basic-addon1">상세 주소</span>
-  <input type="text" class="form-control" placeholder="city" aria-describedby="sizing-addon1" id="city" name="city">
+  <span class="input-group-addon" id="basic-addon1">상세주소</span>
+  <input type="text" class="form-control" placeholder="add" aria-describedby="sizing-addon1" id="add" name="add">
 </div>
 <button type="button" class="btn btn-default navbar-btn" id="confirm_btn">확 인</button>
 <button type="button" class="btn btn-default navbar-btn" id="cancel_btn">취 소</button>
@@ -57,6 +57,7 @@ $('#confirm_btn').click(function(){
 	var add = $('#add').val();
 	var city = $('#city').val();
 	$('#form')
-	.attr('action', '${ctx}/customer.do');
+	.attr('action', '${ctx}/customer.do')
+	.submit();
 });
 </script>

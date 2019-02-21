@@ -3,14 +3,15 @@ package service;
 import java.util.List;
 
 import domain.ProductDTO;
+import proxy.Proxy;
 
 public interface ProductService {
-	public void registProduct(ProductDTO emp);
-	public List<ProductDTO> bringProductsList();
-	public List<ProductDTO> retrieveProducts(String searchWord);
-	public ProductDTO retrieveProduct(String searchWord);
-	public int countProducts();
-	public boolean existProduct(String searchWord);
-	public void modifyProduct(ProductDTO emp);
-	public void removeProduct(ProductDTO emp);
+	public void registProduct(ProductDTO pro);
+	public List<ProductDTO> bringProductsList(Proxy pxy);
+	public List<ProductDTO> retrieveProducts(Proxy pxy);
+	public ProductDTO retrieveProduct(ProductDTO pro);
+	public int countProducts(Proxy pxy);
+	public boolean existProduct(ProductDTO pro);
+	public void modifyProduct(ProductDTO pro);
+	public void removeProduct(ProductDTO pro);
 }

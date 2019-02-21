@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.ProductDAOImpl;
 import domain.ProductDTO;
+import proxy.Proxy;
 
 public class ProductServiceImpl implements ProductService{
 	private static ProductServiceImpl intance = new ProductServiceImpl();
@@ -11,42 +12,42 @@ public class ProductServiceImpl implements ProductService{
 	public static ProductServiceImpl getIntance() {return intance;}
 	ProductDAOImpl dao;
 	@Override
-	public void registProduct(ProductDTO emp) {
-		dao.insertProduct(emp);
+	public void registProduct(ProductDTO pro) {
+		dao.insertProduct(pro);
 	}
 
 	@Override
-	public List<ProductDTO> bringProductsList() {
-		return dao.selectProductsList();
+	public List<ProductDTO> bringProductsList(Proxy pxy) {
+		return dao.selectProductsList(pxy);
 	}
 
 	@Override
-	public List<ProductDTO> retrieveProducts(String searchWord) {
-		return dao.selectProducts(searchWord);
+	public List<ProductDTO> retrieveProducts(Proxy pxy) {
+		return dao.selectProducts(pxy);
 	}
 
 	@Override
-	public ProductDTO retrieveProduct(String searchWord) {
-		return dao.selectProduct(searchWord);
+	public ProductDTO retrieveProduct(ProductDTO pro) {
+		return dao.selectProduct(pro);
 	}
 
 	@Override
-	public int countProducts() {
-		return dao.countProducts();
+	public int countProducts(Proxy pxy) {
+		return dao.countProducts(pxy);
 	}
 
 	@Override
-	public boolean existProduct(String searchWord) {
-		return false;
+	public boolean existProduct(ProductDTO pro) {
+		return dao.existProduct(pro);
 	}
 
 	@Override
-	public void modifyProduct(ProductDTO emp) {
-		dao.updateProduct(emp);
+	public void modifyProduct(ProductDTO pro) {
+		dao.updateProduct(pro);
 	}
 
 	@Override
-	public void removeProduct(ProductDTO emp) {
-		dao.deleteProduct(emp);
+	public void removeProduct(ProductDTO pro) {
+		dao.deleteProduct(pro);
 	}
 }

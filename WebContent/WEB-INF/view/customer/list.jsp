@@ -15,7 +15,7 @@
 
 	<table id="cust_tab">
 	  <tr>
-	    <th>No.</th>
+	  	    <th>No.</th>
 	    <th>아이디</th>
 	    <th>이 름</th>
 	    <th>생년월일</th>
@@ -24,6 +24,7 @@
 	    <th>우편번호</th>
 	    <th>지번주소</th>
 	    <th>상세주소</th>
+
 	  </tr>
 
 	  
@@ -47,8 +48,8 @@
 	<div class="center">
 	  <div class="pagination">
 	  <form id="form" name="form">
-	  <c:if test='${pagination.existPrev}'>
-	  <a href='${ctx}/customer.do?cmd=cust_list&page=list&page_size=5&page_num=${pagination.prevBlock}'>&laquo;</a>
+	 <c:if test="${pagination.existPrev}">
+		  <a href='${ctx}/customer.do?cmd=cust_list&page=list&page_num=${pagination.prevBlock}'>&laquo;</a>
 	  </c:if>
 	  <c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" varStatus="status">
 	  <c:choose>
@@ -60,9 +61,10 @@
 	  	</c:otherwise>
 	  </c:choose>
 	  </c:forEach>
-	  <c:if test='${pagination.existNext}'>
-	  <a href='${ctx}/customer.do?cmd=cust_list&page=list&page_size=5&page_num=${pagination.nextBlock}'>&raquo;</a>
+	  <c:if test="${pagination.existNext}">
+	  	<a href='${ctx}/customer.do?cmd=cust_list&page=list&page_num=${pagination.nextBlock}' >&raquo;</a>
 	  </c:if>
+
 	  </form>
 	  </div>	  
 	</div>

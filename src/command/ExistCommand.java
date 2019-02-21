@@ -53,7 +53,7 @@ public class ExistCommand extends Command{
 			cus =CustomerServiceImpl.getInstance().retrieveCustomer(cus);
 			if(cus!=null) {
 				System.out.println("접근가능"+cus);
-				session.setAttribute("customer", cus);
+				session.setAttribute("cust", cus);
 			}else {
 				System.out.println("접근불가능"+cus);
 				super.setDomain("customer");

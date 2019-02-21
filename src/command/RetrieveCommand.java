@@ -7,9 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import domain.CustomerDTO;
 import domain.ImageDTO;
+import proxy.ImageProxy;
 import proxy.Proxy;
 import proxy.RequestProxy;
 import service.CustomerServiceImpl;
+import service.ImageServiceImpl;
 
 public class RetrieveCommand extends Command{
 	public RetrieveCommand(Map<String, Proxy> pxy) {
@@ -22,8 +24,11 @@ public class RetrieveCommand extends Command{
 	cus.setCustomerID(request.getParameter("customerID"));   
 	System.out.println("아이디 넘어온 갑 "+request.getParameter("customerID"));
 	cus = CustomerServiceImpl.getInstance().retrieveCustomer(cus);
+	System.out.println("cust갔다온값 : "+cus);
+	img.setImgSeq(cus.getPhoto());
+	img =ImageServiceImpl.getInstance().retrieveImage(img);
 	request.setAttribute("cust", cus);
-	request.setAttribute("img", img);
+	request.setAttribute("image", img);
 	}
 	
 }

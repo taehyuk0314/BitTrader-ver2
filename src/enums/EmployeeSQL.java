@@ -8,7 +8,7 @@ public enum EmployeeSQL {
 		switch (this) {
 		case REGISTER:
 			query.append("INSERT INTO EMPLOYEES(EMPLOYEE_ID,NAME,MANAGER,BIRTH_DATE,PHOTO,NOTES) VALUES("
-					+ "EMPLOYEE_ID.NEXTVAL,?,?,?,?,?)");
+					+ "EMPLOYEE_ID.NEXTVAL,?,?,?,'63',?)");
 			break;
 		case EXIST:
 			query.append("SELECT * FROM EMPLOYEES WHERE EMPLOYEE_ID LIKE ? AND NAME LIKE ?");

@@ -7,8 +7,8 @@ public enum CustomerSQL {
 		StringBuffer query = new StringBuffer();
 		switch(this) {
 		case SIGNUP:
-			query.append("INSERT INTO customers(CUSTOMER_ID,CUSTOMER_NAME,PASSWORD,SSN,PHONE,POSTALCODE,ADDRESS,CITY)\n" + 
-					"			VALUES(?,?,?,?,?,?,?,?)") ;
+			query.append("INSERT INTO customers(CUSTOMER_ID,CUSTOMER_NAME,PASSWORD,SSN,PHONE,POSTALCODE,CITY,PHOTO,ADDRESS)\n" + 
+					"			VALUES(?,?,?,?,?,?,?,'63',?)") ;
 			break;
 		case SIGNIN:
 			query.append("SELECT * FROM CUSTOMERS WHERE CUSTOMER_ID LIKE ? AND PASSWORD LIKE ?");
