@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">카테고리</a></li>
+        <li><a id ="category">카테고리</a></li>
         <li><a href="#">사원</a></li>
         <li><a href="#">주문</a></li>
         <li><a href="#" id="product">상품</a></li>
@@ -26,7 +26,11 @@
   </div>
 </nav>
 <script>
-$('#product').click(function(){
-	location.assign('${ctx}/product.do?cmd=prod_list&dir=product&page=list');
+$('#category').attr('style','cursor:pointer').click(function(){
+	location.assign('${ctx}/category.do?cmd=cate_list&page=list');
 });
+$('#product').click(function(){
+	location.assign('${ctx}/product.do?cmd=prod_list&page=list');
+});
+
 </script>

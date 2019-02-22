@@ -3,14 +3,15 @@ package dao;
 import java.util.List;
 
 import domain.SupplierDTO;
+import proxy.Proxy;
 
 public interface SupplierDAO {
-	public void insertSupplier(SupplierDTO emp);
-	public List<SupplierDTO> selectSuppliersList();
-	public List<SupplierDTO> selectSuppliers(String searchWord);
-	public SupplierDTO selectSupplier(String searchWord);
-	public int countSuppliers();
-	public String existSupplier(String searchWord);
-	public void updateSupplier(SupplierDTO emp);
-	public void deleteSupplier(SupplierDTO emp);
+	public void insertSupplier(SupplierDTO sup);
+	public List<SupplierDTO> selectSuppliersList(Proxy pxy);
+	public List<SupplierDTO> selectSuppliers(Proxy pxy);
+	public SupplierDTO selectSupplier(SupplierDTO sup);
+	public int countSuppliers(Proxy pxy);
+	public boolean existSupplier(SupplierDTO sup);
+	public void updateSupplier(SupplierDTO sup);
+	public void deleteSupplier(SupplierDTO sup);
 }

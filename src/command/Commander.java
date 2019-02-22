@@ -18,13 +18,13 @@ public class Commander {
 			case MOVE:
 				cmd = new Command(pxy);
 				break;
-			case REGISTER: case SIGNUP:
+			case REGISTER: case SIGNUP: case PRO_REGIST :
 				cmd = new CreateCommand(pxy);
 				break;	
 			case ACCESS: case SIGNIN:
 				cmd = new ExistCommand(pxy);
 				break;
-			case CUST_LIST: case PROD_LIST:
+			case CUST_LIST: case PROD_LIST: case CATE_LIST:
 				cmd = new ListCommand(pxy);
 				break;
 			case CUST_RETRIEVE :

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import enums.Action;
 import lombok.Data;
+import service.CategoryServiceImpl;
 import service.CustomerServiceImpl;
 import service.ProductServiceImpl;
 
@@ -32,6 +33,8 @@ public class Pagination implements Proxy{
 		case PROD_LIST:
 			rowCount = ProductServiceImpl.getIntance().countProducts(null);
 			break;
+		case CATE_LIST :
+			rowCount = CategoryServiceImpl.getIntance().countCategories(null);
 		default:
 			break;
 		

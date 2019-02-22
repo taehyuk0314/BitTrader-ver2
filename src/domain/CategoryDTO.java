@@ -1,6 +1,6 @@
 package domain;
 import lombok.Data;
-public @Data class CategorieDTO {
+public @Data class CategoryDTO {
 	private String categoryID,
 				   categoryName,
 				   description;

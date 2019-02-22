@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.SupplierDAOImpl;
 import domain.SupplierDTO;
+import proxy.Proxy;
 
 public class SupplierServiceImpl implements SupplierService{
 	private static SupplierServiceImpl intance = new SupplierServiceImpl();
@@ -11,43 +12,43 @@ public class SupplierServiceImpl implements SupplierService{
 	public static SupplierServiceImpl getIntance() {return intance;}
 	SupplierDAOImpl dao;
 	@Override
-	public void registSupplier(SupplierDTO emp) {
-		dao.insertSupplier(emp);
+	public void registSupplier(SupplierDTO sup) {
+		dao.insertSupplier(sup);
 	}
 
 	@Override
-	public List<SupplierDTO> bringSuppliersList() {
-		return dao.selectSuppliersList();
+	public List<SupplierDTO> bringSuppliersList(Proxy pxy) {
+		return dao.selectSuppliersList(pxy);
 	}
 
 	@Override
-	public List<SupplierDTO> retrieveSuppliers(String searchWord) {
-		return dao.selectSuppliers(searchWord);
+	public List<SupplierDTO> retrieveSuppliers(Proxy pxy) {
+		return dao.selectSuppliers(pxy);
 	}
 
 	@Override
-	public SupplierDTO retrieveSupplier(String searchWord) {
-		return dao.selectSupplier(searchWord);
+	public SupplierDTO retrieveSupplier(SupplierDTO sup) {
+		return dao.selectSupplier(sup);
 	}
 
 	@Override
-	public int countSuppliers() {
-		return dao.countSuppliers();
+	public int countSuppliers(Proxy pxy) {
+		return dao.countSuppliers(pxy);
 	}
 
 	@Override
-	public boolean existSupplier(String searchWord) {
-		return false;
+	public boolean existSupplier(SupplierDTO sup) {
+		return dao.existSupplier(sup);
 	}
 
 	@Override
-	public void modifySupplier(SupplierDTO emp) {
-		dao.updateSupplier(emp);
+	public void modifySupplier(SupplierDTO sup) {
+		dao.updateSupplier(sup);
 	}
 
 	@Override
-	public void removeSupplier(SupplierDTO emp) {
-		dao.deleteSupplier(emp);
+	public void removeSupplier(SupplierDTO sup) {
+		dao.deleteSupplier(sup);
 	}
 
 }

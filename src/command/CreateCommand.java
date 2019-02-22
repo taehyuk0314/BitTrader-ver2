@@ -4,8 +4,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import domain.CategoryDTO;
 import domain.CustomerDTO;
 import domain.EmployeeDTO;
+import domain.ProductDTO;
+import domain.SupplierDTO;
 import enums.Action;
 import proxy.Proxy;
 import proxy.RequestProxy;
@@ -38,6 +41,10 @@ public class CreateCommand extends Command{
 			cus.setCity(request.getParameter("city"));
 			cus.setAddress(request.getParameter("add"));
 			CustomerServiceImpl.getInstance().registCustomer(cus);
+			break;
+		case PRO_REGIST :
+			ProductDTO pro = new ProductDTO();
+			
 			break;
 		default:
 			break;
