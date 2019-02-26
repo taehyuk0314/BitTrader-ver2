@@ -45,7 +45,7 @@ public class Pagination implements Proxy{
 		startRow = (pageNum -1) *pageSize + 1;
 		endRow = (rowCount > pageNum * pageSize)? pageNum * pageSize: rowCount;
 		
-		// 김창하의 블록넘버 방식
+
 		int blockNum = (pageNum-1)/blockSize;
 		if(existPrev) {
 			startPage = blockNum*blockSize+1;
@@ -54,15 +54,15 @@ public class Pagination implements Proxy{
 			startPage = 1;
 		}
 		endPage = startPage+(blockSize-1);
-		// 김이레의 매쓰함수 방식
+
 		endPage = (int)(Math.ceil(pageNum / (double) blockSize) * blockSize);
 		startPage = (endPage - blockSize) + 1;
 		
-		// 김승아의 얼추이해한 방식
+
 		startPage = pageNum -((pageNum-1)%blockSize);
 		endPage = startPage+(blockSize-1);
 		
-		// 위 세조건 모두 공통
+
 		if(endPage>pageCount) {
 			endPage = pageCount;
 		}
