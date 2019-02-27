@@ -20,8 +20,8 @@
     <div class="grid-item" id="right">
     	알고리즘<br /><br />
     	<a href="#" id="algo_access">접속하기</a>
-    </div>
 <jsp:include page="bottom.jsp"/>  
+    </div>
 <script src="${js}/oop.js "></script>
 <script>
 $('#emp_register').click(function(){
@@ -38,7 +38,8 @@ $('#cust_login').click(function(){
 });
 $('#oop_access').click(function(){
 	/* encap.main(); */
-	inherit.main();
+	/* inherit.main(); */
+	cust.main();
 });	
 
 </script>

@@ -1,3 +1,67 @@
+function People(name,age,gender,job){
+	this.name = name;
+	this.age = age;
+	this.gender = gender;	
+	this.job = job;
+}
+
+function Cust(name,age,gender,job,grade,custNo){
+	People.call(this,name,age,gender,job);
+	this.grade =grade;
+	this.custNo =custNo;
+}
+
+var cust = (()=>{
+	let main =()=>{
+		let cus = new Cust('홍길동','25세','남','개발자','3급','123');
+		alert('고객정보 :'+cus.name+','+cus.age+','+cus.gender+','+cus.job+','+cus.grade+','+cus.custNo);
+	}
+	return {main : main};
+})();
+
+
+function Product(name,price){
+	this.name =name;
+	this.price = price;
+}
+
+function Food(name, price){
+	Product.call(this,name,price);
+	this.category = 'food';
+}
+
+
+var test=(()=>{
+	let main =()=>{
+		let food = new Food('cheese',5);
+		alert(food.name);
+		alert(food.price);		
+	}
+	return {main : main};
+})();
+
+
+
+
+var person =(()=>{
+//	var _= this;
+	let _name,_age ,_gender,_job;
+	return{
+		setName : (name)=>{this._name = name;},
+		setAge : (age)=>{this._age = age;},
+		setGender : (gender)=>{this._gender = gender;},
+		setJob : (job)=>{this._job = job;},
+		getName : ()=>{return this._name;},
+		getAge : ()=>{return this._age;},
+		getGender : ()=>{return this._gender;},
+		getJob : ()=>{return this._job;},
+		toString : ()=>{
+			return this._name +','+this._age+','+this._gender+','+this._job;
+		}
+	}
+})();
+
+
 var inherit =(()=>{
 	return{
 	main: ()=>{
@@ -21,9 +85,8 @@ function Employee(){
 		setPosition : (position)=>{this._position = position;},
 		getSalary : ()=>{return this._salary;},
 		getPosition : ()=>{return this._position;}
-	};
-};
-
+	}
+}
 
 
 function Customer(){
@@ -33,8 +96,8 @@ function Customer(){
 		setGrade :(grade)=>{this._grade =grade;},
 		getCustNo :()=>{return this._custNo;},
 		getGrade :()=>{return this._grade;}
-	};
-};
+	}
+}
 
 
 var encap=(()=>{
@@ -48,20 +111,4 @@ var encap=(()=>{
 	return {main : main};
 })();
 
-var person =(()=>{
-//	var _= this;
-	let _name,_age ,_gender,_job;
-	return{
-		setName : (name)=>{this._name = name;},
-		setAge : (age)=>{this._age = age;},
-		setGender : (gender)=>{this._gender = gender;},
-		setJob : (job)=>{this._job = job;},
-		getName : ()=>{return this._name;},
-		getAge : ()=>{return this._age;},
-		getGender : ()=>{return this._gender;},
-		getJob : ()=>{return this._job;},
-		toString : ()=>{
-			return this._name +','+this._age+','+this._gender+','+this._job;
-		}
-	}
-})();
+
